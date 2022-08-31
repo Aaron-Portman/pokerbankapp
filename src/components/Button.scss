@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.button {
+  border: 2px solid #EAE2B7;
+  height: 80px;
+  width: 200px;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  margin:15px;
+
+  &::after {
+    content: "Sign Out";
+    font-size: 30px;
+    position: absolute;
+    top: 41%;
+    left: 50%;
+    transform: translate(-50%);
+    color: #EAE2B7;
+    transition: all 0.1s linear;
+  }
+
+  &::before {
+    content: "";
+    position: relative;
+    display: block;
+    height: 15px;
+    width: 15px;
+    background: #EAE2B7;
+    box-shadow: 0px 0px 10px 3px #EAE2B7;
+    margin-left: -8px;
+    margin-top: -8px;
+    opacity: 0;
+    transition: all 0.1s linear;
+    border-radius: 100%;
+    animation: star 1.3s linear infinite;
+  }
+
+  @keyframes star {
+    0% {
+      margin-left: -8px;
+      margin-top: -8px;
+    }
+    25% {
+      margin-left: 194px;
+      margin-top: -8px;
+    }
+
+    50% {
+      margin-left: 194px;
+      margin-top: 75px;
+    }
+    75% {
+      margin-left: -8px;
+      margin-top: 75px;
+    }
+    100% {
+      margin-left: -8px;
+      margin-top: -8px;
+    }
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+      animation: star 1.3s linear infinite;
+    }
+
+    &::after {
+      content: "Are you sure?";
+      text-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 20px #EAE2B7,
+        0 0 30px #EAE2B7, 0 0 40px #EAE2B7, 0 0 50px #EAE2B7, 0 0 60px #EAE2B7;
+    }
+  }
+}

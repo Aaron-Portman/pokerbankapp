@@ -1,0 +1,14 @@
+{
+  "resourceName": "datastore",
+  "policyUUID": "80cb9474",
+  "bucketName": "databucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

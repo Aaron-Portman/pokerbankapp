@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { API, Amplify, Storage } from 'aws-amplify';
-import { Authenticator, Button } from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { listNotes } from './graphql/queries';
 import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from './graphql/mutations';
@@ -58,15 +58,16 @@ const App = () => {
   }
   return (
     <div className="App">
-      <Authenticator hideDefault={true}>
+      <Header/>
+      <Authenticator>
         {({ signOut, user }) => (
           <main>
-            <Header user={user} signOut={signOut}/>
+            <h1>Hello {user.username}</h1>
+            <button onClick={signOut}>Sign out</button>
           </main>
         )}
       </Authenticator>    
     </div>
-    
   );
 }
 
