@@ -1,4 +1,16 @@
 html {
-  color: #EAE2B7;
   background-color: #EAE2B7;
+  color: #EAE2B7
 }
+.App {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+  
+.header { grid-area: 1 / 1 / 2 / 11; }
+.games-list { grid-area: 2 / 1 / 11 / 4; }
+.generator { grid-area: 2 / 4 / 9 / 11; }
+.test { grid-area: 9 / 5 / 11 / 11; }

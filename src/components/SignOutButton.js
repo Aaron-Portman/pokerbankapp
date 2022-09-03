@@ -1,10 +1,10 @@
 import React from "react";
-import "./Button.scss"
+import "./SignOutButton.scss"
 
-const Button = ({signOut}) => {
+const SignOutButton = ({signOut}) => {
     return (
         <div class="button" onClick={signOut}></div>
     )
 }
 
-export default Button;
+export default SignOutButton;

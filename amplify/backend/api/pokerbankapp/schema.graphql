@@ -15,3 +15,20 @@ type Note @model {
   description: String
   image: String
 }
+
+type Player @model {
+  name: String!
+  venmo: String!
+  recentGame: {
+    in: Number!
+    out: Number!
+    net: Number
+    numRebuys: Number
+    paid: Boolean
+  }
+  netWinnings: Number
+  numGamesPlayed: Number
+  gamesPlayed: [
+    id: Number!
+  ] 
+}

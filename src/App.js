@@ -7,6 +7,8 @@ import { listNotes } from './graphql/queries';
 import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from './graphql/mutations';
 import awsmobile from './aws-exports';
 import Header from './components/Header';
+import GamesList from './components/GamesList';
+import Generator from './components/Generator';
 
 const initialFormState = { name: '', description: '' }
 Amplify.configure(awsmobile);
@@ -15,56 +17,63 @@ const App = () => {
   const [notes, setNotes] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
 
-  useEffect(() => {
-    console.log("here")
-    fetchNotes();
-  }, []);
+  // useEffect(() => {
+  //   console.log("here")
+  //   fetchNotes();
+  // }, []);
 
-  const fetchNotes = async () => {
-    const apiData = await API.graphql({ query: listNotes });
-    const notesFromAPI = apiData.data.listNotes.items;
-    await Promise.all(notesFromAPI.map(async note => {
-      if (note.image) {
-        const image = await Storage.get(note.image);
-        note.image = image;
-      }
-      return note;
-    }))
-    setNotes(apiData.data.listNotes.items);
-  }
+  // const fetchNotes = async () => {
+  //   const apiData = await API.graphql({ query: listNotes });
+  //   const notesFromAPI = apiData.data.listNotes.items;
+  //   await Promise.all(notesFromAPI.map(async note => {
+  //     if (note.image) {
+  //       const image = await Storage.get(note.image);
+  //       note.image = image;
+  //     }
+  //     return note;
+  //   }))
+  //   setNotes(apiData.data.listNotes.items);
+  // }
 
-  const createNote = async () => {
-    if (!formData.name || !formData.description) return;
-    await API.graphql({ query: createNoteMutation, variables: { input: formData } });
-    if (formData.image) {
-      const image = await Storage.get(formData.image);
-      formData.image = image;
-    }
-    setNotes([ ...notes, formData ]);
-    setFormData(initialFormState);
-  }
+  // const createNote = async () => {
+  //   if (!formData.name || !formData.description) return;
+  //   await API.graphql({ query: createNoteMutation, variables: { input: formData } });
+  //   if (formData.image) {
+  //     const image = await Storage.get(formData.image);
+  //     formData.image = image;
+  //   }
+  //   setNotes([ ...notes, formData ]);
+  //   setFormData(initialFormState);
+  // }
 
-  const deleteNote = async({ id }) => {
-    const newNotesArray = notes.filter(note => note.id !== id);
-    setNotes(newNotesArray);
-    await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
-  }
-  const onChange = async (e) => {
-    if (!e.target.files[0]) return
-    const file = e.target.files[0];
-    setFormData({ ...formData, image: file.name });
-    await Storage.put(file.name, file);
-    fetchNotes();
-  }
+  // const deleteNote = async({ id }) => {
+  //   const newNotesArray = notes.filter(note => note.id !== id);
+  //   setNotes(newNotesArray);
+  //   await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
+  // }
+  // const onChange = async (e) => {
+  //   if (!e.target.files[0]) return
+  //   const file = e.target.files[0];
+  //   setFormData({ ...formData, image: file.name });
+  //   await Storage.put(file.name, file);
+  //   fetchNotes();
+  // }
   return (
     <div className="App">
       <Authenticator hideDefault={true}>
         {({ signOut, user }) => (
-          <main>
+          <main className='header'>
             <Header user={user} signOut={signOut}/>
           </main>
         )}
-      </Authenticator>    
+      </Authenticator>  
+      <div className="games-list">
+        <GamesList/> 
+      </div> 
+      <div className="generator">
+        <Generator/>
+      </div>
+      <div className="test"></div>
     </div>
     
   );

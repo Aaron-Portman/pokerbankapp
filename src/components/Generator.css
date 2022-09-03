@@ -1,0 +1,34 @@
+.generator-wrapper{
+    height: fit-content;
+    background-color: rgba(53, 104, 91, 0.95);
+    margin: 10px 10px 10px 20px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.generator-title{
+    align-self: center;
+    font-size: 2vw;
+}
+.inputs{
+    display: flex;
+    flex-direction: row;   
+    align-items: center; 
+    padding: 5px 10px;
+}
+.inputs-titles{
+    padding-right: 5px;
+}
+.inputs-inputs, .wrong-num{
+    color: #003049;
+    width: 10%;
+    padding: 4px 10px;
+    margin: 8px 5px;
+    display: inline-block;
+    border: 1px solid #003049;
+    background-color: #EAE2B7;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

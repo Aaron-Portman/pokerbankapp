@@ -1,0 +1,15 @@
+.inputs-titles{
+    padding: 5px 3px 5px 20px;
+}
+
+.inputs-submit{
+    color: #003049;
+    width: 20%;
+    padding: 4px 10px;
+    margin: 8px 5px;
+    display: inline-block;
+    border: 1px solid #003049;
+    background-color: #EAE2B7;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
